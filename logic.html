@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon says</title>
+    <link rel="stylesheet" href="logic.css">
+    <script src="logic.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0b23e1ba8c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="totalbg">
+        <div id="section1">
+            <audio id="levelCompleteAudio" src="level-completed.mp3"></audio>
+            <audio id="clickAudio" src="vinoth.mp3"></audio>
+        </div>
+        <div id="sectionMid">
+            <header>
+                <h1 id="headingSymon" ><span style="color: #FF4136;">S</span><span style="color: #0074D9;">I</span><span
+                        style="color: #2ECC40;">M</span><span style="color: #FFDC00;">O</span><span
+                        style="color: #FFFFFF;">N</span> <span style="color: #FF4136;">S</span><span
+                        style="color: #0074D9;">A</span><span style="color: #2ECC40;">Y</span><span
+                        style="color: #FFDC00;">S</span></h1>
+            </header>
+            <main>
+                <section>
+                    <div id="sample">
+                        <div id="box_green"></div>
+                        <div id="box_red"></div>
+                        <div id="box_yellow"></div>
+                        <div id="box_blue"></div>
+                    </div>
+                    <div id="currentScore">
+                        <p id="userScore">0</p>
+                    </div>
+                    <div id="showResult">
+                        <div id="result">
+                            <p class="para">High score</p>
+                            <p id="highScore">0</p>
+                            <p class="para">YOUR SCORE</p>
+                            <p id="finalScore">0</p>
+                            <a href="https://vinothbaskar-026oc5s4-8443.zcodecorp.in/HTML%20PROJECTS/java%20script/Mini%20project/logic.html"><button id="tryAgain" class="btn info1">TRY AGAIN</button></a>
+                            <a
+                                href="https://vinothbaskar-026oc5s4-8443.zcodecorp.in/HTML%20PROJECTS/java%20script/Mini%20project/simon.html"><button id="endGame"
+                                    class="btn info2">END GAME</button></a>
+                        </div>
+                    </div>
+                    <div id="pauseInShow">
+                        <div id="pauseResult">
+                            <div id="closeInPause"><i class="fa-regular fa-circle-xmark"></i></div>
+                            <div id="pauseOptions">
+                                <button type="button" id="btn_continue" class="pauseBtn">CONTINUE</button>
+                                <a id="btn_menu_pause"
+                                    href="https://vinothbaskar-026oc5s4-8443.zcodecorp.in/HTML%20PROJECTS/java%20script/Mini%20project/simon.html"><button
+                                        type="button" id="btn_menu" class="pauseBtnMenu">MENU</button></a>
+                                <button type="button" id="btn_soundOn" class="pauseBtn">SOUND ON</button>
+                                <button type="button" id="btn_soundOff" class="pauseBtn">SOUND OFF</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        <div id="section2">
+            <button type="button" id="pauseGame" class="sidebtn pause"><i class="fa-solid fa-pause"></i></button>
+            <div class="sidebtn music">
+                <i id="volumeOff" class="fa-solid fa-volume-xmark"></i>
+                <i id="volumeOn" class="fa-solid fa-volume-high"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

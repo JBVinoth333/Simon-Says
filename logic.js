@@ -1,5 +1,7 @@
 function tryAgainPlay ()
 {
+    let isSoundEnabled = true;
+
     function startGame ()
     {
 
@@ -313,8 +315,8 @@ function tryAgainPlay ()
         function showTryAgain ()
         {
             console.log( "show try" );
-            show = document.getElementById( "showResult" );
-            show.style.display = "block";
+            let show = document.getElementById( "showResult" );
+            show.style.display = "flex";
         }
         // -------------------------Start game---------------->
 
@@ -345,7 +347,7 @@ function tryAgainPlay ()
 
     function pausePlay ()
     {
-        pauseMenu.style.display = "block";
+        pauseMenu.style.display = "flex";
     };
     function closePauseFun ()
     {
@@ -359,6 +361,34 @@ function tryAgainPlay ()
     let musicOff = document.getElementById( "btn_soundOff" );
     let soundOnIcon = document.getElementById( "volumeOn" );
     let soundOffIcon = document.getElementById( "volumeOff" );
+    let clickAudio = document.getElementById( "clickAudio" );
+    let levelCompleteAudio = document.getElementById( "levelCompleteAudio" );
+
+    function setSoundState ( enabled )
+    {
+        isSoundEnabled = enabled;
+
+        if ( enabled )
+        {
+            musicOn.style.display = "none";
+            musicOff.style.display = "block";
+            soundOffIcon.style.display = "none";
+            soundOnIcon.style.display = "inline";
+        } else
+        {
+            musicOn.style.display = "block";
+            musicOff.style.display = "none";
+            soundOffIcon.style.display = "inline";
+            soundOnIcon.style.display = "none";
+
+            // Immediately stop any currently playing audio when sound is turned off.
+            clickAudio.pause();
+            clickAudio.currentTime = 0;
+            levelCompleteAudio.pause();
+            levelCompleteAudio.currentTime = 0;
+        }
+    }
+
     musicOn.addEventListener( "click", onMusic );
     musicOff.addEventListener( "click", offMusic );
     soundOffIcon.addEventListener( "click", onMusic );
@@ -366,29 +396,33 @@ function tryAgainPlay ()
 
     function onMusic ()
     {
-        musicOn.style.display = "none";
-        musicOff.style.display = "block";
-        soundOffIcon.style.display = "none";
-        soundOnIcon.style.display = "inline";
+        setSoundState( true );
     }
     function offMusic ()
     {
-        musicOn.style.display = "block";
-        musicOff.style.display = "none";
-        soundOffIcon.style.display = "inline";
-        soundOnIcon.style.display = "none";
+        setSoundState( false );
     }
+
+    // Sync UI with default state.
+    setSoundState( true );
 
     // -------------------audios------------>
 
     function levelCompleted ()
     {
         // let levelComplete = document.getElementById( "levelCompleteAudio" );
-        // levelComplete.play();
+        // if ( isSoundEnabled )
+        // {
+        //     levelComplete.play();
+        // }
     }
     function correctClick(){
-        let eachPlayAudio=document.getElementById("clickAudio");
-        eachPlayAudio.play();
+        if ( !isSoundEnabled )
+        {
+            return;
+        }
+        clickAudio.currentTime = 0;
+        clickAudio.play();
     }
     // -------------------pc play-------------->
 };
